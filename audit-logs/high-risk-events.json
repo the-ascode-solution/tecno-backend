@@ -1,0 +1,20 @@
+[
+  {
+    "timestamp": "2025-10-05T23:22:15.468Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::ffff:127.0.0.1",
+    "userAgent": "PerformanceTester/1.0",
+    "details": {
+      "method": "GET",
+      "url": "/monthly",
+      "statusCode": 200,
+      "responseTime": 18405
+    },
+    "outcome": "success",
+    "risk": "high"
+  }
+]

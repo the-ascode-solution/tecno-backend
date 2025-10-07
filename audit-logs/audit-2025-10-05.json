@@ -1,0 +1,314 @@
+[
+  {
+    "timestamp": "2025-10-05T23:27:10.910Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "GET",
+      "url": "/%7BsessionId%7D/status",
+      "statusCode": 429,
+      "responseTime": 0
+    },
+    "outcome": "failure",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:10.943Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "GET",
+      "url": "/%7BsessionId%7D/status",
+      "statusCode": 429,
+      "responseTime": 1
+    },
+    "outcome": "failure",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:10.989Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "PUT",
+      "url": "/%7BsessionId%7D/save-progress",
+      "statusCode": 429,
+      "responseTime": 0,
+      "requestBody": {}
+    },
+    "outcome": "failure",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:11.004Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "POST",
+      "url": "/create",
+      "statusCode": 201,
+      "responseTime": 239,
+      "requestBody": {
+        "userId": "stress-user-t3wj9lzkp"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:11.016Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "GET",
+      "url": "/%7BsessionId%7D/status",
+      "statusCode": 429,
+      "responseTime": 1
+    },
+    "outcome": "failure",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:11.092Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "PUT",
+      "url": "/%7BsessionId%7D/save-progress",
+      "statusCode": 429,
+      "responseTime": 0,
+      "requestBody": {}
+    },
+    "outcome": "failure",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:11.108Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "GET",
+      "url": "/%7BsessionId%7D/status",
+      "statusCode": 429,
+      "responseTime": 0
+    },
+    "outcome": "failure",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:11.223Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "POST",
+      "url": "/create",
+      "statusCode": 201,
+      "responseTime": 223,
+      "requestBody": {
+        "userId": "stress-user-ikhr1z4qw"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:11.249Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "POST",
+      "url": "/create",
+      "statusCode": 201,
+      "responseTime": 236,
+      "requestBody": {
+        "userId": "stress-user-5e731pbpg"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:11.276Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "POST",
+      "url": "/create",
+      "statusCode": 201,
+      "responseTime": 232,
+      "requestBody": {
+        "userId": "stress-user-ovlddqrdo"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:11.339Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "POST",
+      "url": "/%7BsessionId%7D/submit",
+      "statusCode": 400,
+      "responseTime": 1,
+      "requestBody": {}
+    },
+    "outcome": "failure",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:11.355Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "POST",
+      "url": "/create",
+      "statusCode": 201,
+      "responseTime": 230,
+      "requestBody": {
+        "userId": "stress-user-bomtsjqng"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:11.460Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "PUT",
+      "url": "/%7BsessionId%7D/save-progress",
+      "statusCode": 429,
+      "responseTime": 0,
+      "requestBody": {}
+    },
+    "outcome": "failure",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:11.534Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "PUT",
+      "url": "/%7BsessionId%7D/save-progress",
+      "statusCode": 429,
+      "responseTime": 0,
+      "requestBody": {}
+    },
+    "outcome": "failure",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:11.639Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "POST",
+      "url": "/%7BsessionId%7D/submit",
+      "statusCode": 400,
+      "responseTime": 0,
+      "requestBody": {}
+    },
+    "outcome": "failure",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-05T23:27:11.674Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "StressTester/1.0",
+    "details": {
+      "method": "POST",
+      "url": "/create",
+      "statusCode": 201,
+      "responseTime": 229,
+      "requestBody": {
+        "userId": "stress-user-0mv8ukxk4"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  }
+]
