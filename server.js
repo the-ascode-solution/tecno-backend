@@ -104,8 +104,20 @@ if (process.env.DISABLE_SECURITY === 'true') {
 app.use(inputValidation);
 app.use(csrfProtection);
 
-// CORS configuration
-app.use(cors(corsConfig));
+// CORS configuration for Railway deployment
+const corsOptions = {
+  origin: [
+    'https://www.tecnotribe.site',
+    'https://tecnotribe.site',
+    'http://localhost:3000', // for development
+    'http://localhost:3001'  // for development
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+};
+
+app.use(cors(corsOptions));
 
 // Logging middleware
 app.use(morgan('combined'));
@@ -254,4 +266,3 @@ if (!isMasterProcess) {
   handleUncaughtException();
   gracefulShutdown(server);
 }
-
