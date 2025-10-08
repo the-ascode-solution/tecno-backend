@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 const { v4: uuidv4 } = require('uuid');
 const Session = require('../models/Session');
@@ -22,6 +23,18 @@ const { cacheService, CACHE_TTL } = require('../config/redis');
 // @access  Public
 router.post('/create', sessionCreationLimiter, async (req, res) => {
   try {
+    // Check if database is connected
+    if (mongoose.connection.readyState !== 1) {
+      console.log('⚠️ Database not ready, waiting for connection...');
+      // Wait for connection with timeout
+      await new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => reject(new Error('Database connection timeout')), 5000);
+        mongoose.connection.once('connected', () => {
+          clearTimeout(timeout);
+          resolve();
+        });
+      });
+    }
     const sessionId = uuidv4();
     const sessionData = {
       sessionId,

@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 const Survey = require('../models/Survey');
 
@@ -7,6 +8,18 @@ const Survey = require('../models/Survey');
 // @access  Public
 router.post('/submit', async (req, res) => {
   try {
+    // Check if database is connected
+    if (mongoose.connection.readyState !== 1) {
+      console.log('⚠️ Database not ready, waiting for connection...');
+      // Wait for connection with timeout
+      await new Promise((resolve, reject) => {
+        const timeout = setTimeout(() => reject(new Error('Database connection timeout')), 5000);
+        mongoose.connection.once('connected', () => {
+          clearTimeout(timeout);
+          resolve();
+        });
+      });
+    }
     console.log('📝 Survey submission received:', {
       timestamp: new Date().toISOString(),
       ipAddress: req.ip || req.connection.remoteAddress,

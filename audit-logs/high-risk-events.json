@@ -16,5 +16,102 @@
     },
     "outcome": "success",
     "risk": "high"
+  },
+  {
+    "timestamp": "2025-10-08T01:30:07.446Z",
+    "level": "info",
+    "category": "data_modification",
+    "action": "write",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "details": {
+      "method": "POST",
+      "url": "/submit",
+      "statusCode": 500,
+      "responseTime": 35,
+      "requestBody": {
+        "gender": "Male",
+        "yearOfStudy": "3rd Year",
+        "fieldOfStudy": "Computer Science",
+        "university": "Test University",
+        "socialMediaPlatforms": [
+          "Instagram",
+          "TikTok",
+          "Twitter"
+        ],
+        "timeSpentOnSocialMedia": "2-4 hours",
+        "followsTechContent": "Yes",
+        "techUpdateSources": [
+          "YouTube",
+          "Tech Blogs"
+        ],
+        "currentPhoneBrand": "TECNO",
+        "topPhoneFunctions": [
+          "Camera",
+          "Gaming",
+          "Social Media"
+        ],
+        "phoneChangeFrequency": "Every 2 years",
+        "tecnoExperience": "Yes",
+        "tecnoExperienceRating": "Excellent",
+        "learningSkills": [
+          "Programming",
+          "Design"
+        ],
+        "partTimeWork": [
+          "Freelancing",
+          "Tutoring"
+        ],
+        "phoneFeaturesRanking": [
+          "Camera",
+          "Performance",
+          "Battery"
+        ],
+        "phoneBudget": "200-400 USD",
+        "preferredPhoneColors": [
+          "Black",
+          "Blue"
+        ],
+        "interestedInAmbassador": true,
+        "ambassadorStrengths": [
+          "Social Media",
+          "Leadership"
+        ],
+        "ambassadorBenefits": [
+          "Free Products",
+          "Networking"
+        ],
+        "name": "Test User",
+        "contactNumber": "+1234567890",
+        "socialMediaLink": "https://instagram.com/testuser",
+        "followerCount": "1000-5000",
+        "suggestions": "Great survey!"
+      }
+    },
+    "outcome": "failure",
+    "risk": "high"
+  },
+  {
+    "timestamp": "2025-10-08T01:30:07.477Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "details": {
+      "method": "POST",
+      "url": "/create",
+      "statusCode": 500,
+      "responseTime": 15,
+      "requestBody": {
+        "userId": "test-user-123",
+        "deviceType": "desktop",
+        "browser": "Chrome"
+      }
+    },
+    "outcome": "failure",
+    "risk": "high"
   }
 ]

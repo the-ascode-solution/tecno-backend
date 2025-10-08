@@ -1,0 +1,632 @@
+[
+  {
+    "timestamp": "2025-10-08T01:28:38.852Z",
+    "level": "info",
+    "category": "data_modification",
+    "action": "write",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.6392",
+    "details": {
+      "method": "POST",
+      "url": "/submit",
+      "statusCode": 201,
+      "responseTime": 288,
+      "requestBody": {
+        "university": "Test University",
+        "currentPhoneBrand": "TECNO",
+        "yearOfStudy": "3rd Year",
+        "gender": "Male"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-08T01:28:51.403Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.6392",
+    "details": {
+      "method": "POST",
+      "url": "/create",
+      "statusCode": 201,
+      "responseTime": 243,
+      "requestBody": {
+        "browser": "Chrome",
+        "deviceType": "desktop",
+        "userId": "test-user-123"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-08T01:29:02.836Z",
+    "level": "info",
+    "category": "data_modification",
+    "action": "write",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.6392",
+    "details": {
+      "method": "POST",
+      "url": "/submit",
+      "statusCode": 201,
+      "responseTime": 234,
+      "requestBody": {
+        "university": "Test University 2",
+        "yearOfStudy": "2nd Year",
+        "gender": "Female"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-08T01:30:07.446Z",
+    "level": "info",
+    "category": "data_modification",
+    "action": "write",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "details": {
+      "method": "POST",
+      "url": "/submit",
+      "statusCode": 500,
+      "responseTime": 35,
+      "requestBody": {
+        "gender": "Male",
+        "yearOfStudy": "3rd Year",
+        "fieldOfStudy": "Computer Science",
+        "university": "Test University",
+        "socialMediaPlatforms": [
+          "Instagram",
+          "TikTok",
+          "Twitter"
+        ],
+        "timeSpentOnSocialMedia": "2-4 hours",
+        "followsTechContent": "Yes",
+        "techUpdateSources": [
+          "YouTube",
+          "Tech Blogs"
+        ],
+        "currentPhoneBrand": "TECNO",
+        "topPhoneFunctions": [
+          "Camera",
+          "Gaming",
+          "Social Media"
+        ],
+        "phoneChangeFrequency": "Every 2 years",
+        "tecnoExperience": "Yes",
+        "tecnoExperienceRating": "Excellent",
+        "learningSkills": [
+          "Programming",
+          "Design"
+        ],
+        "partTimeWork": [
+          "Freelancing",
+          "Tutoring"
+        ],
+        "phoneFeaturesRanking": [
+          "Camera",
+          "Performance",
+          "Battery"
+        ],
+        "phoneBudget": "200-400 USD",
+        "preferredPhoneColors": [
+          "Black",
+          "Blue"
+        ],
+        "interestedInAmbassador": true,
+        "ambassadorStrengths": [
+          "Social Media",
+          "Leadership"
+        ],
+        "ambassadorBenefits": [
+          "Free Products",
+          "Networking"
+        ],
+        "name": "Test User",
+        "contactNumber": "+1234567890",
+        "socialMediaLink": "https://instagram.com/testuser",
+        "followerCount": "1000-5000",
+        "suggestions": "Great survey!"
+      }
+    },
+    "outcome": "failure",
+    "risk": "high"
+  },
+  {
+    "timestamp": "2025-10-08T01:30:07.477Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "details": {
+      "method": "POST",
+      "url": "/create",
+      "statusCode": 500,
+      "responseTime": 15,
+      "requestBody": {
+        "userId": "test-user-123",
+        "deviceType": "desktop",
+        "browser": "Chrome"
+      }
+    },
+    "outcome": "failure",
+    "risk": "high"
+  },
+  {
+    "timestamp": "2025-10-08T01:30:29.247Z",
+    "level": "info",
+    "category": "data_modification",
+    "action": "write",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "details": {
+      "method": "POST",
+      "url": "/submit",
+      "statusCode": 201,
+      "responseTime": 251,
+      "requestBody": {
+        "gender": "Male",
+        "yearOfStudy": "3rd Year",
+        "fieldOfStudy": "Computer Science",
+        "university": "Test University",
+        "socialMediaPlatforms": [
+          "Instagram",
+          "TikTok",
+          "Twitter"
+        ],
+        "timeSpentOnSocialMedia": "2-4 hours",
+        "followsTechContent": "Yes",
+        "techUpdateSources": [
+          "YouTube",
+          "Tech Blogs"
+        ],
+        "currentPhoneBrand": "TECNO",
+        "topPhoneFunctions": [
+          "Camera",
+          "Gaming",
+          "Social Media"
+        ],
+        "phoneChangeFrequency": "Every 2 years",
+        "tecnoExperience": "Yes",
+        "tecnoExperienceRating": "Excellent",
+        "learningSkills": [
+          "Programming",
+          "Design"
+        ],
+        "partTimeWork": [
+          "Freelancing",
+          "Tutoring"
+        ],
+        "phoneFeaturesRanking": [
+          "Camera",
+          "Performance",
+          "Battery"
+        ],
+        "phoneBudget": "200-400 USD",
+        "preferredPhoneColors": [
+          "Black",
+          "Blue"
+        ],
+        "interestedInAmbassador": true,
+        "ambassadorStrengths": [
+          "Social Media",
+          "Leadership"
+        ],
+        "ambassadorBenefits": [
+          "Free Products",
+          "Networking"
+        ],
+        "name": "Test User",
+        "contactNumber": "+1234567890",
+        "socialMediaLink": "https://instagram.com/testuser",
+        "followerCount": "1000-5000",
+        "suggestions": "Great survey!"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-08T01:30:29.483Z",
+    "level": "info",
+    "category": "data_modification",
+    "action": "write",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "details": {
+      "method": "POST",
+      "url": "/submit",
+      "statusCode": 201,
+      "responseTime": 230,
+      "requestBody": {
+        "gender": "Male",
+        "yearOfStudy": "3rd Year",
+        "fieldOfStudy": "Computer Science",
+        "university": "Test University",
+        "socialMediaPlatforms": [
+          "Instagram",
+          "TikTok",
+          "Twitter"
+        ],
+        "timeSpentOnSocialMedia": "2-4 hours",
+        "followsTechContent": "Yes",
+        "techUpdateSources": [
+          "YouTube",
+          "Tech Blogs"
+        ],
+        "currentPhoneBrand": "TECNO",
+        "topPhoneFunctions": [
+          "Camera",
+          "Gaming",
+          "Social Media"
+        ],
+        "phoneChangeFrequency": "Every 2 years",
+        "tecnoExperience": "Yes",
+        "tecnoExperienceRating": "Excellent",
+        "learningSkills": [
+          "Programming",
+          "Design"
+        ],
+        "partTimeWork": [
+          "Freelancing",
+          "Tutoring"
+        ],
+        "phoneFeaturesRanking": [
+          "Camera",
+          "Performance",
+          "Battery"
+        ],
+        "phoneBudget": "200-400 USD",
+        "preferredPhoneColors": [
+          "Black",
+          "Blue"
+        ],
+        "interestedInAmbassador": true,
+        "ambassadorStrengths": [
+          "Social Media",
+          "Leadership"
+        ],
+        "ambassadorBenefits": [
+          "Free Products",
+          "Networking"
+        ],
+        "name": "Test User",
+        "contactNumber": "+1234567890",
+        "socialMediaLink": "https://instagram.com/testuser",
+        "followerCount": "1000-5000",
+        "suggestions": "Great survey!"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-08T01:30:29.726Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "details": {
+      "method": "POST",
+      "url": "/create",
+      "statusCode": 201,
+      "responseTime": 238,
+      "requestBody": {
+        "userId": "test-user-123",
+        "deviceType": "desktop",
+        "browser": "Chrome"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-08T01:34:02.196Z",
+    "level": "info",
+    "category": "data_modification",
+    "action": "write",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.6392",
+    "details": {
+      "method": "POST",
+      "url": "/submit",
+      "statusCode": 201,
+      "responseTime": 296,
+      "requestBody": {
+        "university": "Test University",
+        "currentPhoneBrand": "TECNO",
+        "yearOfStudy": "3rd Year",
+        "gender": "Male"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-08T01:34:15.442Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.6392",
+    "details": {
+      "method": "POST",
+      "url": "/create",
+      "statusCode": 201,
+      "responseTime": 249,
+      "requestBody": {
+        "browser": "Chrome",
+        "deviceType": "desktop",
+        "userId": "test-user-123"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-08T01:34:28.375Z",
+    "level": "info",
+    "category": "data_modification",
+    "action": "write",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "userAgent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.6392",
+    "details": {
+      "method": "POST",
+      "url": "/submit",
+      "statusCode": 201,
+      "responseTime": 229,
+      "requestBody": {
+        "university": "Test University 2",
+        "currentPhoneBrand": "TECNO",
+        "yearOfStudy": "2nd Year",
+        "gender": "Female"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-08T01:38:11.287Z",
+    "level": "info",
+    "category": "data_modification",
+    "action": "write",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "details": {
+      "method": "POST",
+      "url": "/submit",
+      "statusCode": 201,
+      "responseTime": 283,
+      "requestBody": {
+        "gender": "Female",
+        "yearOfStudy": "2nd Year",
+        "fieldOfStudy": "Information Technology",
+        "university": "API Test University",
+        "socialMediaPlatforms": [
+          "Instagram",
+          "TikTok",
+          "Snapchat"
+        ],
+        "timeSpentOnSocialMedia": "3-5 hours",
+        "followsTechContent": "Yes",
+        "techUpdateSources": [
+          "YouTube",
+          "Twitter",
+          "Tech Blogs"
+        ],
+        "currentPhoneBrand": "TECNO",
+        "topPhoneFunctions": [
+          "Camera",
+          "Gaming",
+          "Social Media",
+          "Music"
+        ],
+        "phoneChangeFrequency": "Every 1.5 years",
+        "tecnoExperience": "Yes",
+        "tecnoExperienceRating": "Very Good",
+        "learningSkills": [
+          "Programming",
+          "Design",
+          "Marketing"
+        ],
+        "partTimeWork": [
+          "Freelancing",
+          "Content Creation"
+        ],
+        "phoneFeaturesRanking": [
+          "Camera",
+          "Performance",
+          "Battery",
+          "Design"
+        ],
+        "phoneBudget": "300-500 USD",
+        "preferredPhoneColors": [
+          "Purple",
+          "Black",
+          "White"
+        ],
+        "interestedInAmbassador": true,
+        "ambassadorStrengths": [
+          "Social Media",
+          "Leadership",
+          "Communication"
+        ],
+        "ambassadorBenefits": [
+          "Free Products",
+          "Networking",
+          "Experience"
+        ],
+        "name": "API Test User",
+        "contactNumber": "+1987654321",
+        "socialMediaLink": "https://instagram.com/apitestuser",
+        "followerCount": "2000-5000",
+        "suggestions": "Great API testing!"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-08T01:38:11.532Z",
+    "level": "info",
+    "category": "data_modification",
+    "action": "write",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "details": {
+      "method": "POST",
+      "url": "/submit",
+      "statusCode": 201,
+      "responseTime": 234,
+      "requestBody": {
+        "gender": "Female",
+        "yearOfStudy": "2nd Year",
+        "fieldOfStudy": "Information Technology",
+        "university": "API Test University",
+        "socialMediaPlatforms": [
+          "Instagram",
+          "TikTok",
+          "Snapchat"
+        ],
+        "timeSpentOnSocialMedia": "3-5 hours",
+        "followsTechContent": "Yes",
+        "techUpdateSources": [
+          "YouTube",
+          "Twitter",
+          "Tech Blogs"
+        ],
+        "currentPhoneBrand": "TECNO",
+        "topPhoneFunctions": [
+          "Camera",
+          "Gaming",
+          "Social Media",
+          "Music"
+        ],
+        "phoneChangeFrequency": "Every 1.5 years",
+        "tecnoExperience": "Yes",
+        "tecnoExperienceRating": "Very Good",
+        "learningSkills": [
+          "Programming",
+          "Design",
+          "Marketing"
+        ],
+        "partTimeWork": [
+          "Freelancing",
+          "Content Creation"
+        ],
+        "phoneFeaturesRanking": [
+          "Camera",
+          "Performance",
+          "Battery",
+          "Design"
+        ],
+        "phoneBudget": "300-500 USD",
+        "preferredPhoneColors": [
+          "Purple",
+          "Black",
+          "White"
+        ],
+        "interestedInAmbassador": true,
+        "ambassadorStrengths": [
+          "Social Media",
+          "Leadership",
+          "Communication"
+        ],
+        "ambassadorBenefits": [
+          "Free Products",
+          "Networking",
+          "Experience"
+        ],
+        "name": "API Test User",
+        "contactNumber": "+1987654321",
+        "socialMediaLink": "https://instagram.com/apitestuser",
+        "followerCount": "2000-5000",
+        "suggestions": "Great API testing!"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-08T01:38:11.776Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "details": {
+      "method": "POST",
+      "url": "/create",
+      "statusCode": 201,
+      "responseTime": 237,
+      "requestBody": {
+        "userId": "api-test-user-456",
+        "deviceType": "mobile",
+        "browser": "Safari"
+      }
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-08T01:38:13.371Z",
+    "level": "info",
+    "category": "data_access",
+    "action": "read",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "details": {
+      "method": "GET",
+      "url": "/overview",
+      "statusCode": 200,
+      "responseTime": 1592
+    },
+    "outcome": "success",
+    "risk": "low"
+  },
+  {
+    "timestamp": "2025-10-08T01:38:14.057Z",
+    "level": "info",
+    "category": "data_modification",
+    "action": "write",
+    "resource": "data",
+    "user": "anonymous",
+    "ip": "::1",
+    "details": {
+      "method": "GET",
+      "url": "/stats",
+      "statusCode": 200,
+      "responseTime": 676
+    },
+    "outcome": "success",
+    "risk": "low"
+  }
+]

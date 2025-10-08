@@ -88,7 +88,17 @@ const isMasterProcess = initializeCluster();
 if (!isMasterProcess) {
   // Connect to database with optimization
   const dbOptions = performanceOptimizer.optimizeDatabase(require('mongoose'));
-  connectDB();
+  
+  // Wait for database connection before starting server
+  const initializeDatabase = async () => {
+    try {
+      await connectDB();
+      console.log('✅ Database connection established successfully');
+    } catch (error) {
+      console.error('❌ Failed to connect to database:', error);
+      process.exit(1);
+    }
+  };
   
   // Only connect to Redis if not disabled
   if (process.env.REDIS_DISABLED === 'true') {
@@ -103,6 +113,9 @@ if (!isMasterProcess) {
       // Continue without Redis in all environments
     });
   }
+  
+  // Initialize database connection
+  initializeDatabase();
 }
 
 // Security middleware (can be disabled via env for testing)
@@ -119,6 +132,8 @@ const corsOptions = {
   origin: [
     'https://www.tecnotribe.site',
     'https://tecnotribe.site',
+    'http://www.tecnotribe.site',
+    'http://tecnotribe.site',
     'http://localhost:3000', // for development
     'http://localhost:3001'  // for development
   ],
@@ -253,33 +268,42 @@ app.use(errorHandler);
 
 // Start server (only in worker processes or single process mode)
 if (!isMasterProcess) {
-  const server = app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-    console.log(`📊 API available at http://localhost:${PORT}`);
-    console.log(`🏥 Health check: http://localhost:${PORT}/health`);
-    console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`);
-    console.log(`👷 Worker Process ID: ${process.pid}`);
-  });
+  // Wait for database connection before starting server
+  const startServer = async () => {
+    // Wait a moment for database connection to be established
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    const server = app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+      console.log(`📊 API available at http://localhost:${PORT}`);
+      console.log(`🏥 Health check: http://localhost:${PORT}/health`);
+      console.log(`📝 Environment: ${process.env.NODE_ENV || 'development'}`);
+      console.log(`👷 Worker Process ID: ${process.pid}`);
+    });
 
-  // Optimize server performance
-  performanceOptimizer.optimizeServer(server);
+    // Optimize server performance
+    performanceOptimizer.optimizeServer(server);
 
-  // Log Redis status summary after server start
-  (async () => {
-    try {
-      const status = await redisHealthCheck();
-      if (status.connected) {
-        console.log(`🟢 Redis Status: connected (${status.latency} latency) host=${status.config.host} port=${status.config.port} db=${status.config.db}`);
-      } else {
-        console.log('🟡 Redis Status: not connected (running without cache)');
+    // Log Redis status summary after server start
+    (async () => {
+      try {
+        const status = await redisHealthCheck();
+        if (status.connected) {
+          console.log(`🟢 Redis Status: connected (${status.latency} latency) host=${status.config.host} port=${status.config.port} db=${status.config.db}`);
+        } else {
+          console.log('🟡 Redis Status: not connected (running without cache)');
+        }
+      } catch (e) {
+        console.log('🟡 Redis Status: unknown (health check failed)');
       }
-    } catch (e) {
-      console.log('🟡 Redis Status: unknown (health check failed)');
-    }
-  })();
+    })();
 
-  // Setup error handlers
-  handleUnhandledRejection();
-  handleUncaughtException();
-  gracefulShutdown(server);
+    // Setup error handlers
+    handleUnhandledRejection();
+    handleUncaughtException();
+    gracefulShutdown(server);
+  };
+  
+  // Start the server
+  startServer();
 }

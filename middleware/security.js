@@ -99,7 +99,13 @@ const surveyRateLimit = createAdvancedRateLimit({
 const corsConfig = {
   origin: (origin, callback) => {
     const allowedOrigins = process.env.ALLOWED_ORIGINS ? 
-      process.env.ALLOWED_ORIGINS.split(',') : ['http://localhost:3000', 'https://technotribe.site', 'https://www.technotribe.site'];
+      process.env.ALLOWED_ORIGINS.split(',') : [
+        'http://localhost:3000', 
+        'https://tecnotribe.site', 
+        'https://www.tecnotribe.site',
+        'http://tecnotribe.site',
+        'http://www.tecnotribe.site'
+      ];
     
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);

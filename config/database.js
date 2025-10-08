@@ -114,7 +114,10 @@ const connectDB = async () => {
       socketTimeoutMS: CONNECTION_CONFIG.socketTimeoutMS
     });
 
-    const conn = await mongoose.connect(process.env.MONGODB_URI, CONNECTION_CONFIG);
+    // Use environment variable or fallback to the provided URI
+    const mongoUri = process.env.MONGODB_URI || 'mongodb+srv://theascodde:bigboom%213@cluster1.hd9scoz.mongodb.net/survey_db?retryWrites=true&w=majority&appName=Cluster1';
+    
+    const conn = await mongoose.connect(mongoUri, CONNECTION_CONFIG);
 
     connectionState.connectionCount++;
     connectionState.isConnected = true;
