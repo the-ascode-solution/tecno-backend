@@ -12,6 +12,7 @@ const { connectRedis, updateCacheService, redisHealthCheck } = require('./config
 const surveyRoutes = require('./routes/survey');
 const sessionRoutes = require('./routes/session');
 const analyticsRoutes = require('./routes/analytics');
+const statusRoutes = require('./routes/status');
 
 // Import middleware
 const { 
@@ -147,6 +148,9 @@ if (process.env.ENABLE_REQUEST_QUEUE === 'true') {
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+// Serve static files from public directory
+app.use(express.static('public'));
+
 // Trust proxy for accurate IP addresses
 app.set('trust proxy', 1);
 
@@ -182,6 +186,9 @@ app.get('/health', healthCheckMiddleware);
 app.get('/health/ready', readinessCheck);
 app.get('/health/live', livenessCheck);
 
+// Status page route
+app.use('/status', statusRoutes);
+
 // Metrics endpoint for Prometheus
 app.get('/metrics', async (req, res) => {
   try {
@@ -209,6 +216,7 @@ app.get('/', (req, res) => {
   res.json({
     message: 'Techno Tribe Survey API',
     version: '1.0.0',
+    status: '/status',
     endpoints: {
       health: '/health',
       submitSurvey: 'POST /api/survey/submit',

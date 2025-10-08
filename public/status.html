@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techno Tribe Backend Status</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .status-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .status-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .status-card h3 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .status-awake {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .status-sleep {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            color: white;
+        }
+
+        .status-connected {
+            background: linear-gradient(135deg, #2196F3, #1976D2);
+            color: white;
+        }
+
+        .status-disconnected {
+            background: linear-gradient(135deg, #FF9800, #F57C00);
+            color: white;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: currentColor;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .details {
+            text-align: left;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .details strong {
+            color: #333;
+        }
+
+        .refresh-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .refresh-btn:active {
+            transform: translateY(0);
+        }
+
+        .last-updated {
+            color: #999;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        .loading {
+            display: none;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .error {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .auto-refresh {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .auto-refresh input[type="checkbox"] {
+            transform: scale(1.2);
+        }
+
+        .system-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .system-info h4 {
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .info-value {
+            color: #333;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .status-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .status-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Techno Tribe Backend</h1>
+            <p>Real-time System Status Monitor</p>
+        </div>
+
+        <button class="refresh-btn" onclick="refreshStatus()">
+            🔄 Refresh Status
+        </button>
+
+        <div class="loading" id="loading">
+            Loading status...
+        </div>
+
+        <div class="error" id="error"></div>
+
+        <div class="status-grid" id="statusGrid">
+            <!-- Status cards will be populated here -->
+        </div>
+
+        <div class="system-info" id="systemInfo" style="display: none;">
+            <h4>📊 System Information</h4>
+            <div class="info-grid" id="systemGrid">
+                <!-- System info will be populated here -->
+            </div>
+        </div>
+
+        <div class="auto-refresh">
+            <input type="checkbox" id="autoRefresh" onchange="toggleAutoRefresh()">
+            <label for="autoRefresh">Auto-refresh every 30 seconds</label>
+        </div>
+
+        <div class="last-updated" id="lastUpdated">
+            Last updated: Never
+        </div>
+    </div>
+
+    <script>
+        let autoRefreshInterval = null;
+
+        function formatBytes(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function formatUptime(seconds) {
+            const days = Math.floor(seconds / 86400);
+            const hours = Math.floor((seconds % 86400) / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            
+            if (days > 0) return `${days}d ${hours}h ${minutes}m`;
+            if (hours > 0) return `${hours}h ${minutes}m`;
+            return `${minutes}m`;
+        }
+
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleString();
+        }
+
+        function getStatusClass(status) {
+            switch (status) {
+                case 'awake': return 'status-awake';
+                case 'sleep': return 'status-sleep';
+                case 'connected': return 'status-connected';
+                case 'disconnected': return 'status-disconnected';
+                default: return 'status-disconnected';
+            }
+        }
+
+        function getStatusIcon(status) {
+            switch (status) {
+                case 'awake': return '🟢';
+                case 'sleep': return '🔴';
+                case 'connected': return '🟢';
+                case 'disconnected': return '🟡';
+                default: return '❓';
+            }
+        }
+
+        async function refreshStatus() {
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            const statusGrid = document.getElementById('statusGrid');
+            const systemInfo = document.getElementById('systemInfo');
+            const systemGrid = document.getElementById('systemGrid');
+            const lastUpdated = document.getElementById('lastUpdated');
+
+            loading.style.display = 'block';
+            error.style.display = 'none';
+
+            try {
+                const response = await fetch('/status/api');
+                const data = await response.json();
+
+                if (!data.success) {
+                    throw new Error(data.error || 'Failed to fetch status');
+                }
+
+                // Update status grid
+                statusGrid.innerHTML = `
+                    <div class="status-card">
+                        <h3>🖥️ Backend Status</h3>
+                        <div class="status-indicator ${getStatusClass(data.backend.status)}">
+                            <div class="status-dot"></div>
+                            ${getStatusIcon(data.backend.status)} ${data.backend.status.toUpperCase()}
+                        </div>
+                        <div class="details">
+                            <p><strong>Uptime:</strong> ${formatUptime(data.backend.uptime)}</p>
+                            <p><strong>Memory:</strong> ${formatBytes(data.backend.memory.heapUsed)} / ${formatBytes(data.backend.memory.heapTotal)}</p>
+                            <p><strong>PID:</strong> ${data.backend.pid}</p>
+                            <p><strong>Node Version:</strong> ${data.backend.nodeVersion}</p>
+                            <p><strong>Environment:</strong> ${data.backend.environment}</p>
+                        </div>
+                    </div>
+
+                    <div class="status-card">
+                        <h3>🍃 MongoDB Status</h3>
+                        <div class="status-indicator ${getStatusClass(data.mongodb.status)}">
+                            <div class="status-dot"></div>
+                            ${getStatusIcon(data.mongodb.status)} ${data.mongodb.status.toUpperCase()}
+                        </div>
+                        <div class="details">
+                            <p><strong>Host:</strong> ${data.mongodb.host || 'N/A'}</p>
+                            <p><strong>Port:</strong> ${data.mongodb.port || 'N/A'}</p>
+                            <p><strong>Database:</strong> ${data.mongodb.database || 'N/A'}</p>
+                            <p><strong>Collections:</strong> ${data.mongodb.collections || 0}</p>
+                            <p><strong>Models:</strong> ${data.mongodb.models || 0}</p>
+                            <p><strong>Connections:</strong> ${data.mongodb.connectionCount || 0}</p>
+                            ${data.mongodb.lastConnectionTime ? `<p><strong>Last Connected:</strong> ${formatDate(data.mongodb.lastConnectionTime)}</p>` : ''}
+                        </div>
+                    </div>
+
+                    <div class="status-card">
+                        <h3>⚡ Redis Status</h3>
+                        <div class="status-indicator ${getStatusClass(data.redis.status)}">
+                            <div class="status-dot"></div>
+                            ${getStatusIcon(data.redis.status)} ${data.redis.status.toUpperCase()}
+                        </div>
+                        <div class="details">
+                            <p><strong>Status:</strong> ${data.redis.message}</p>
+                        </div>
+                    </div>
+                `;
+
+                // Update system info
+                systemInfo.style.display = 'block';
+                systemGrid.innerHTML = `
+                    <div class="info-item">
+                        <span class="info-label">Platform:</span>
+                        <span class="info-value">${data.system.platform} (${data.system.arch})</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">System Uptime:</span>
+                        <span class="info-value">${formatUptime(data.system.uptime)}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Total Memory:</span>
+                        <span class="info-value">${formatBytes(data.system.totalMemory)}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Free Memory:</span>
+                        <span class="info-value">${formatBytes(data.system.freeMemory)}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Load Average:</span>
+                        <span class="info-value">${data.system.loadAverage[0].toFixed(2)}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Response Time:</span>
+                        <span class="info-value">${data.responseTime}</span>
+                    </div>
+                `;
+
+                lastUpdated.textContent = `Last updated: ${formatDate(data.timestamp)}`;
+
+            } catch (err) {
+                error.textContent = `Error: ${err.message}`;
+                error.style.display = 'block';
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        function toggleAutoRefresh() {
+            const checkbox = document.getElementById('autoRefresh');
+            
+            if (checkbox.checked) {
+                autoRefreshInterval = setInterval(refreshStatus, 30000); // 30 seconds
+            } else {
+                if (autoRefreshInterval) {
+                    clearInterval(autoRefreshInterval);
+                    autoRefreshInterval = null;
+                }
+            }
+        }
+
+        // Initial load
+        refreshStatus();
+    </script>
+</body>
+</html>
