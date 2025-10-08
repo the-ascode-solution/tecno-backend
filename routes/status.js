@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const { performHealthCheck } = require('../middleware/healthCheck');
-const { getConnectionStats } = require('../config/database');
+const { getConnectionStats, connectDB, disconnectDB } = require('../config/database');
 const { cacheService } = require('../config/redis');
 
 const router = express.Router();
@@ -47,9 +47,11 @@ router.get('/api', async (req, res) => {
       };
     }
     
-    // Determine backend status
-    const backendStatus = healthData.status === 'healthy' ? 'awake' : 
-                         healthData.status === 'degraded' ? 'awake' : 'sleep';
+    // Determine backend status for Railway semantics
+    // 'active' when healthy or degraded; 'crashed' when unhealthy
+    const backendStatus = (healthData.status === 'healthy' || healthData.status === 'degraded')
+      ? 'active'
+      : 'crashed';
     
     // Determine MongoDB status
     const mongoStatus = mongoStats.connectionState.isConnected ? 'connected' : 'disconnected';
@@ -98,7 +100,7 @@ router.get('/api', async (req, res) => {
       timestamp: new Date().toISOString(),
       error: error.message,
       backend: {
-        status: 'error',
+        status: 'crashed',
         message: 'Failed to get backend status'
       },
       mongodb: {
@@ -110,6 +112,47 @@ router.get('/api', async (req, res) => {
         message: 'Failed to get Redis status'
       }
     });
+  }
+});
+
+// Reconnect MongoDB: gracefully disconnect then reconnect
+router.post('/reconnect-mongo', async (req, res) => {
+  try {
+    await disconnectDB();
+    await connectDB();
+    const mongoStats = getConnectionStats();
+    return res.json({
+      success: true,
+      message: 'MongoDB reconnected',
+      mongodb: {
+        connected: mongoStats.connectionState.isConnected,
+        host: mongoStats.stats.host,
+        port: mongoStats.stats.port,
+        database: mongoStats.stats.name,
+        connectionCount: mongoStats.connectionState.connectionCount,
+        lastConnectionTime: mongoStats.connectionState.lastConnectionTime
+      }
+    });
+  } catch (error) {
+    console.error('MongoDB reconnect error:', error);
+    return res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+// Restart backend server (Railway will bring it back up)
+router.post('/restart', async (req, res) => {
+  try {
+    // Respond first so client gets confirmation
+    res.json({ success: true, message: 'Server will restart in 1s' });
+    // Give the response a moment to flush
+    setTimeout(() => {
+      console.log('♻️ Restart requested via /status/restart — exiting process');
+      // Exit with non-zero to ensure platform restarts
+      process.exit(1);
+    }, 1000);
+  } catch (error) {
+    console.error('Server restart error:', error);
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
