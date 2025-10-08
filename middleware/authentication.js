@@ -340,6 +340,12 @@ class AuthenticationManager {
       if (req.path.startsWith('/api/')) {
         return next();
       }
+
+      // Skip CSRF for status utility routes used by internal dashboard
+      // Allows POSTs from the local status page (same-origin) without CSRF token
+      if (req.path.startsWith('/status')) {
+        return next();
+      }
       
       const csrfToken = req.headers['x-csrf-token'] || req.body._csrf;
       const sessionCsrfToken = req.session?.csrfToken;
