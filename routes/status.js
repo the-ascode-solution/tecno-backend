@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
 // API endpoint for status data
 router.get('/api', async (req, res) => {
   try {
+    console.log('Status API endpoint called');
     const startTime = Date.now();
     
     // Get comprehensive health check data
@@ -91,6 +92,7 @@ router.get('/api', async (req, res) => {
     });
     
   } catch (error) {
+    console.error('Error in status API:', error);
     res.status(500).json({
       success: false,
       timestamp: new Date().toISOString(),
