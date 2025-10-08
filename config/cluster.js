@@ -15,8 +15,8 @@ const CLUSTER_CONFIG = {
   // Maximum restart attempts before giving up
   maxRestarts: process.env.MAX_RESTARTS || 5,
   
-  // Enable clustering in production
-  enableClustering: process.env.NODE_ENV === 'production' || process.env.ENABLE_CLUSTERING === 'true'
+  // Enable clustering in production (but disable on Railway/cloud platforms)
+  enableClustering: (process.env.NODE_ENV === 'production' && !process.env.RAILWAY_ENVIRONMENT) || process.env.ENABLE_CLUSTERING === 'true'
 };
 
 // Worker restart tracking

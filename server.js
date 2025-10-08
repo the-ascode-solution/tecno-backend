@@ -72,7 +72,16 @@ const {
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Log environment information for debugging
+console.log('🌍 Environment Information:');
+console.log(`   NODE_ENV: ${process.env.NODE_ENV || 'development'}`);
+console.log(`   PORT: ${PORT}`);
+console.log(`   RAILWAY_ENVIRONMENT: ${process.env.RAILWAY_ENVIRONMENT || 'not set'}`);
+console.log(`   Platform: ${process.platform}`);
+console.log(`   Node Version: ${process.version}`);
+
 // Initialize clustering (only in master process)
+// Disable clustering on Railway and other cloud platforms
 const isMasterProcess = initializeCluster();
 
 // Connect to MongoDB and Redis (only in worker processes or single process mode)
